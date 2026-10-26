@@ -1,0 +1,17 @@
+{
+  "slug": "lampe-arc-marbre",
+  "nom": "Lampe arc pied marbre blanc",
+  "categorie": "lampes",
+  "description": "Lampe arc à pied en marbre blanc de Carrare avec bras articulé en laiton brossé. Abat-jour en lin beige naturel. Câble textile tressé, interrupteur intégré. Idéale pour lire ou créer une ambiance dans un coin salon.",
+  "dimensions": "H 190 cm, bras L 140 cm, abat-jour Ø 40 cm",
+  "materiaux": "Marbre blanc, laiton brossé, lin naturel",
+  "prixIndicatif": 189,
+  "prixAvant": 269,
+  "promotionPourcent": 30,
+  "images": [],
+  "liensAffilies": [
+    { "marchand": "westwing", "url": "https://www.westwing.fr/EXEMPLE", "prixAffiche": "189 €" },
+    { "marchand": "alinea", "url": "https://www.alinea.fr/EXEMPLE", "prixAffiche": "199 €" }
+  ],
+  "domainePublicOuGenerique": true
+}

@@ -1,0 +1,17 @@
+{
+  "slug": "canape-velours-vert",
+  "nom": "Canapé velours 3 places vert sauge",
+  "categorie": "canapes",
+  "description": "Canapé 3 places en velours côtelé vert sauge avec pieds en bois de chêne. Structure en bois massif, assise ferme et confortable. Tissu velours résistant et facile d'entretien.",
+  "dimensions": "L 220 × P 90 × H 80 cm",
+  "materiaux": "Velours polyester, structure bois massif, pieds chêne huilé",
+  "prixIndicatif": 599,
+  "prixAvant": 849,
+  "promotionPourcent": 29,
+  "images": [],
+  "liensAffilies": [
+    { "marchand": "maisons_du_monde", "url": "https://www.maisonsdumonde.com/EXEMPLE", "prixAffiche": "599 €" },
+    { "marchand": "la_redoute", "url": "https://www.laredoute.fr/EXEMPLE", "prixAffiche": "649 €" }
+  ],
+  "domainePublicOuGenerique": true
+}

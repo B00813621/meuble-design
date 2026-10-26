@@ -1,0 +1,23 @@
+{
+  "slug": "etagere-murale-bois",
+  "nom": "Étagère murale bois flottante",
+  "categorie": "salon",
+  "description": "Étagère murale flottante en chêne massif huilé. Design épuré et sobre, s'intègre dans tous les intérieurs contemporains. Fixation invisible incluse, charge max 15 kg.",
+  "dimensions": "L 80 × P 20 × H 4 cm",
+  "materiaux": "Chêne massif, huile naturelle",
+  "prixIndicatif": 89,
+  "images": ["/images/produits/etagere-murale-bois-1.jpg"],
+  "liensAffilies": [
+    {
+      "marchand": "maisons_du_monde",
+      "url": "https://www.maisonsdumonde.com/EXEMPLE",
+      "prixAffiche": "89 €"
+    },
+    {
+      "marchand": "la_redoute",
+      "url": "https://www.laredoute.fr/EXEMPLE",
+      "prixAffiche": "95 €"
+    }
+  ],
+  "domainePublicOuGenerique": true
+}

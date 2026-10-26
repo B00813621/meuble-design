@@ -1,0 +1,23 @@
+{
+  "slug": "lampe-suspension-rotin",
+  "nom": "Suspension rotin naturel",
+  "categorie": "luminaire",
+  "description": "Lampe suspension en rotin naturel tressé à la main. Diffuse une lumière douce et chaleureuse. Parfaite au-dessus d'une table à manger ou dans un salon bohème chic.",
+  "dimensions": "Ø 45 cm, câble 150 cm (ajustable)",
+  "materiaux": "Rotin naturel, câble textile coton",
+  "prixIndicatif": 65,
+  "images": ["/images/produits/lampe-suspension-rotin-1.jpg"],
+  "liensAffilies": [
+    {
+      "marchand": "alinea",
+      "url": "https://www.alinea.fr/EXEMPLE",
+      "prixAffiche": "65 €"
+    },
+    {
+      "marchand": "westwing",
+      "url": "https://www.westwing.fr/EXEMPLE",
+      "prixAffiche": "72 €"
+    }
+  ],
+  "domainePublicOuGenerique": true
+}

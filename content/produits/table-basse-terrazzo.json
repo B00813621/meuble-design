@@ -1,0 +1,17 @@
+{
+  "slug": "table-basse-terrazzo",
+  "nom": "Table basse ronde terrazzo",
+  "categorie": "tables",
+  "description": "Table basse ronde en terrazzo gris et blanc avec pieds en métal noir mat. Plateau épais de 3 cm, très résistant. Le terrazzo est un matériau unique — chaque pièce est légèrement différente.",
+  "dimensions": "Ø 70 cm, H 38 cm",
+  "materiaux": "Terrazzo (ciment + granulats), pieds acier laqué noir mat",
+  "prixIndicatif": 229,
+  "prixAvant": 349,
+  "promotionPourcent": 34,
+  "images": [],
+  "liensAffilies": [
+    { "marchand": "habitat", "url": "https://www.habitat.fr/EXEMPLE", "prixAffiche": "229 €" },
+    { "marchand": "maisons_du_monde", "url": "https://www.maisonsdumonde.com/EXEMPLE", "prixAffiche": "249 €" }
+  ],
+  "domainePublicOuGenerique": true
+}

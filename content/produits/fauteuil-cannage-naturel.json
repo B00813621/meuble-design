@@ -1,0 +1,17 @@
+{
+  "slug": "fauteuil-cannage-naturel",
+  "nom": "Fauteuil cannage naturel",
+  "categorie": "canapes",
+  "description": "Fauteuil bergère revisité avec assise et dossier en cannage naturel tressé à la main. Structure en bois de hêtre teintée noyer. Coussin d'assise amovible en coton beige. Poids 8 kg.",
+  "dimensions": "L 72 × P 78 × H 85 cm, assise H 42 cm",
+  "materiaux": "Hêtre massif teinté noyer, cannage rotin naturel, coussin coton",
+  "prixIndicatif": 279,
+  "prixAvant": 399,
+  "promotionPourcent": 30,
+  "images": [],
+  "liensAffilies": [
+    { "marchand": "habitat", "url": "https://www.habitat.fr/EXEMPLE", "prixAffiche": "279 €" },
+    { "marchand": "maisons_du_monde", "url": "https://www.maisonsdumonde.com/EXEMPLE", "prixAffiche": "299 €" }
+  ],
+  "domainePublicOuGenerique": true
+}

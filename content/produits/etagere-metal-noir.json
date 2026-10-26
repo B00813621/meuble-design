@@ -1,0 +1,17 @@
+{
+  "slug": "etagere-metal-noir",
+  "nom": "Étagère bibliothèque métal noir",
+  "categorie": "salon",
+  "description": "Bibliothèque ouverte 5 niveaux en métal laqué noir mat. Structure robuste, 6 clayettes en MDF chêne. Style industriel chic, parfaite pour un salon ou un bureau. Montage facile 30 min.",
+  "dimensions": "L 90 × P 35 × H 180 cm",
+  "materiaux": "Acier laqué noir mat, plateaux MDF placage chêne",
+  "prixIndicatif": 199,
+  "prixAvant": 299,
+  "promotionPourcent": 33,
+  "images": [],
+  "liensAffilies": [
+    { "marchand": "cdiscount", "url": "https://www.cdiscount.com/EXEMPLE", "prixAffiche": "199 €" },
+    { "marchand": "amazon", "url": "https://www.amazon.fr/EXEMPLE", "prixAffiche": "209 €" }
+  ],
+  "domainePublicOuGenerique": true
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "chaise-bureau-scandinave",
+  "nom": "Chaise de bureau scandinave mesh",
+  "categorie": "bureau",
+  "description": "Chaise de bureau au design scandinave épuré avec dossier en mesh respirant, soutien lombaire réglable et assise rembourrée haute densité. Idéale pour les longues journées de travail en home office.",
+  "dimensions": "L 65 × P 65 × H 95–110 cm",
+  "materiaux": "Structure acier, assise mousse HD, dossier mesh polyester",
+  "prixIndicatif": 249,
+  "images": ["/images/produits/chaise-bureau-scandinave-1.jpg"],
+  "liensAffilies": [
+    {
+      "marchand": "amazon",
+      "url": "https://www.amazon.fr/dp/EXEMPLE",
+      "prixAffiche": "249 €"
+    },
+    {
+      "marchand": "cdiscount",
+      "url": "https://www.cdiscount.com/EXEMPLE",
+      "prixAffiche": "259 €"
+    }
+  ],
+  "enVente": false,
+  "domainePublicOuGenerique": true
+}
