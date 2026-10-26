@@ -9,7 +9,7 @@ import { ComparisonTable } from "@/components/ComparisonTable";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 
-const mdxComponents = { ComparisonTable };
+// Wrap ComparisonTable to inject data from frontmatter (next-mdx-remote v6 RSC doesn't support scope)
 
 export async function generateStaticParams() {
   return getAllArticles("comparatif").map((a) => ({ slug: a.slug }));
@@ -35,6 +35,9 @@ export default async function ComparatifPage({ params }: { params: Promise<{ slu
   const result = getArticleBySlug(slug, "comparatif");
   if (!result) notFound();
   const { article, content } = result;
+  const mdxComponents = {
+    ComparisonTable: () => article.comparatif ? <ComparisonTable comparatif={article.comparatif} /> : null,
+  };
 
   return (
     <>

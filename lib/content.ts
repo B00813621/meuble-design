@@ -76,6 +76,7 @@ export function getArticleBySlug(
       produitsCites: data.produitsCites ?? [],
       contientLiensAffilies: data.contientLiensAffilies ?? false,
       tempsLecture: Math.ceil(readingTime(content).minutes),
+      comparatif: data.comparatif,
     },
     content,
   };

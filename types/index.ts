@@ -39,6 +39,7 @@ export type Article = {
   produitsCites?: string[];
   contientLiensAffilies: boolean;
   tempsLecture?: number;
+  comparatif?: Comparatif;
 };
 
 export type Categorie = {
