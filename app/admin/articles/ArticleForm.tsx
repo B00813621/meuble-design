@@ -50,6 +50,7 @@ export function ArticleForm({ initialSlug = "", initialFrontmatter, initialConte
   const [imageMode, setImageMode] = useState<"field" | "insert">("field");
   const [images, setImages] = useState<string[]>([]);
   const [uploadingImg, setUploadingImg] = useState(false);
+  const [deletingImg, setDeletingImg] = useState<string | null>(null);
 
   // Callout dropdown
   const [showCalloutMenu, setShowCalloutMenu] = useState(false);
@@ -111,6 +112,18 @@ export function ArticleForm({ initialSlug = "", initialFrontmatter, initialConte
       await loadImages();
     }
     setUploadingImg(false);
+  };
+
+  const deletePickerImage = async (src: string) => {
+    if (!confirm(`Supprimer "${src.split("/").pop()}" définitivement ?`)) return;
+    setDeletingImg(src);
+    await fetch("/api/admin/images", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ path: src }),
+    });
+    await loadImages();
+    setDeletingImg(null);
   };
 
   const selectImage = (src: string) => {
@@ -265,6 +278,18 @@ export function ArticleForm({ initialSlug = "", initialFrontmatter, initialConte
                 <rect x="1" y="2" width="14" height="12" rx="2"/>
                 <circle cx="5.5" cy="6" r="1.5"/>
                 <path d="M1 11l4-4 3 3 2-2 5 5"/>
+              </svg>
+            </Btn>
+            <Sep />
+
+            {/* Tableau */}
+            <Btn title="Insérer un tableau 3×3" onClick={() => editorRef.current?.insertTable()}>
+              <svg className="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="1" y="1" width="14" height="14" rx="2"/>
+                <line x1="1" y1="5.5" x2="15" y2="5.5"/>
+                <line x1="1" y1="10.5" x2="15" y2="10.5"/>
+                <line x1="5.5" y1="1" x2="5.5" y2="15"/>
+                <line x1="10.5" y1="1" x2="10.5" y2="15"/>
               </svg>
             </Btn>
             <Sep />
@@ -449,19 +474,29 @@ export function ArticleForm({ initialSlug = "", initialFrontmatter, initialConte
                   </p>
                   <div className="grid grid-cols-3 gap-3">
                     {images.map((src) => (
-                      <button key={src} onClick={() => selectImage(src)}
+                      <div key={src}
                         className="group relative overflow-hidden rounded-xl border-2 border-transparent transition hover:border-stone-900 hover:shadow-md">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={src} alt="" className="h-32 w-full object-cover" />
-                        <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/50 to-transparent p-2 opacity-0 transition group-hover:opacity-100">
-                          <span className="rounded-lg bg-white px-2 py-1 text-xs font-bold text-stone-900">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/50 opacity-0 transition group-hover:opacity-100">
+                          <button
+                            onClick={() => selectImage(src)}
+                            className="rounded-lg bg-white px-2 py-1 text-xs font-bold text-stone-900 hover:bg-stone-100"
+                          >
                             {imageMode === "insert" ? "Insérer" : "Choisir"}
-                          </span>
+                          </button>
+                          <button
+                            onClick={() => deletePickerImage(src)}
+                            disabled={deletingImg === src}
+                            className="rounded-lg bg-red-600 px-2 py-1 text-xs font-medium text-white hover:bg-red-700 disabled:opacity-60"
+                          >
+                            {deletingImg === src ? "..." : "Supprimer"}
+                          </button>
                         </div>
                         <div className="border-t border-stone-100 px-2 py-1.5">
                           <p className="truncate text-[10px] text-stone-500">{src.split("/").pop()}</p>
                         </div>
-                      </button>
+                      </div>
                     ))}
                   </div>
                 </>

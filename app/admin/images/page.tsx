@@ -8,6 +8,7 @@ export default function ImagesPage() {
   const [copied, setCopied] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [dragging, setDragging] = useState(false);
+  const [deleting, setDeleting] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const load = async () => {
@@ -39,6 +40,18 @@ export default function ImagesPage() {
     navigator.clipboard.writeText(src);
     setCopied(src);
     setTimeout(() => setCopied(null), 1500);
+  };
+
+  const deleteImage = async (src: string) => {
+    if (!confirm(`Supprimer "${src.split("/").pop()}" définitivement ?`)) return;
+    setDeleting(src);
+    await fetch("/api/admin/images", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ path: src }),
+    });
+    await load();
+    setDeleting(null);
   };
 
   const visible = images.filter((src) =>
@@ -87,7 +100,6 @@ export default function ImagesPage() {
         </div>
       </div>
 
-      {/* Search */}
       {images.length > 6 && (
         <input
           type="search"
@@ -130,6 +142,13 @@ export default function ImagesPage() {
                 >
                   {copied === src ? "✓ Copié !" : "Copier le chemin"}
                 </button>
+                <button
+                  onClick={() => deleteImage(src)}
+                  disabled={deleting === src}
+                  className="rounded-lg bg-red-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-700 disabled:opacity-60"
+                >
+                  {deleting === src ? "Suppression..." : "Supprimer"}
+                </button>
               </div>
               {/* Filename */}
               <div className="border-t border-stone-100 px-2 py-1.5">
@@ -141,7 +160,7 @@ export default function ImagesPage() {
       )}
 
       <div className="mt-8 rounded-xl border border-stone-100 bg-stone-50 p-4 text-sm text-stone-500">
-        <strong>💡 Conseil :</strong> Cliquez sur une image pour copier son chemin, puis collez-le dans le champ "Image principale" de l'éditeur.
+        <strong>💡 Conseil :</strong> Survolez une image pour copier son chemin ou la supprimer définitivement.
       </div>
     </div>
   );

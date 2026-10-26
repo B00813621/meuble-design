@@ -119,3 +119,30 @@
 .rich-editor-prose ::selection {
   background: #fde68a;
 }
+
+/* Tables */
+.rich-editor-prose table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
+.rich-editor-prose th {
+  background: #f5f5f4;
+  font-weight: 700;
+  padding: 8px 12px;
+  text-align: left;
+  border: 1px solid #e7e5e4;
+  color: #1c1917;
+}
+.rich-editor-prose td {
+  padding: 8px 12px;
+  border: 1px solid #e7e5e4;
+  vertical-align: top;
+}
+.rich-editor-prose tr:nth-child(even) td {
+  background: #fafaf9;
+}
+.rich-editor-prose .selectedCell {
+  background: #fde68a !important;
+}
