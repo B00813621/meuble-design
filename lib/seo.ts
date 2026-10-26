@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import type { Article, Produit } from "@/types";
+import type { Article, Produit, FAQ } from "@/types";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://meuble-design.fr";
 const SITE_NAME = "Meuble Design";
 const SITE_DESCRIPTION =
   "Guides, comparatifs et sélections de meubles design accessibles. Trouvez les meilleures offres pour décorer votre intérieur.";
+
+const TYPE_PATHS: Record<Article["type"], string> = {
+  article: "blog",
+  guide: "guides",
+  comparatif: "comparatifs",
+};
 
 export function buildMetadata(opts: {
   title: string;
@@ -58,7 +64,7 @@ export function jsonLdOrganization() {
     "@type": "Organization",
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png`, width: 200, height: 60 },
     sameAs: [],
   };
 }
@@ -78,6 +84,7 @@ export function jsonLdWebSite() {
 }
 
 export function jsonLdArticle(article: Article) {
+  const path = TYPE_PATHS[article.type];
   return {
     "@context": "https://schema.org",
     "@type": article.type === "guide" ? "HowTo" : "Article",
@@ -85,14 +92,43 @@ export function jsonLdArticle(article: Article) {
     description: article.metaDescription,
     datePublished: article.datePublication,
     dateModified: article.dateMaj,
-    author: { "@type": "Person", name: article.auteur ?? SITE_NAME },
+    author: {
+      "@type": "Person",
+      name: article.auteur ?? SITE_NAME,
+    },
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
       logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
     },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${article.slug}` },
-    ...(article.image && { image: `${SITE_URL}${article.image}` }),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/${path}/${article.slug}`,
+    },
+    ...(article.image && {
+      image: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}${article.image}`,
+        width: 1200,
+        height: 630,
+      },
+    }),
+  };
+}
+
+export function jsonLdFAQ(faqs: FAQ[]) {
+  if (!faqs?.length) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.reponse,
+      },
+    })),
   };
 }
 
@@ -103,11 +139,21 @@ export function jsonLdProduct(produit: Produit) {
     name: produit.nom,
     description: produit.description,
     image: produit.images.map((img) => `${SITE_URL}${img}`),
+    ...(produit.note && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: String(produit.note),
+        bestRating: "5",
+        worstRating: "1",
+        reviewCount: String(produit.nombreAvis ?? 1),
+      },
+    }),
     ...(produit.prixIndicatif && {
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "EUR",
         lowPrice: produit.prixIndicatif,
+        highPrice: produit.prixAvant ?? produit.prixIndicatif,
         offerCount: produit.liensAffilies.length,
         availability: "https://schema.org/InStock",
       },
@@ -115,9 +161,7 @@ export function jsonLdProduct(produit: Produit) {
   };
 }
 
-export function jsonLdBreadcrumb(
-  items: { name: string; url: string }[]
-) {
+export function jsonLdBreadcrumb(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -130,9 +174,7 @@ export function jsonLdBreadcrumb(
   };
 }
 
-export function jsonLdItemList(
-  items: { name: string; url: string }[]
-) {
+export function jsonLdItemList(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",

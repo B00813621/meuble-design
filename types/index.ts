@@ -14,6 +14,8 @@ export type Produit = {
   prixIndicatif?: number;
   prixAvant?: number;
   promotionPourcent?: number;
+  note?: number;
+  nombreAvis?: number;
   images: string[];
   liensAffilies: LienAffilie[];
   // Phase 2 — vente directe
@@ -23,6 +25,11 @@ export type Produit = {
   origineGeographique?: string;
   /** DOIT être true pour que enVente soit activable */
   domainePublicOuGenerique: boolean;
+};
+
+export type FAQ = {
+  question: string;
+  reponse: string;
 };
 
 export type Article = {
@@ -40,6 +47,7 @@ export type Article = {
   contientLiensAffilies: boolean;
   tempsLecture?: number;
   comparatif?: Comparatif;
+  faqs?: FAQ[];
 };
 
 export type Categorie = {

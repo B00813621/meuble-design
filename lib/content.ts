@@ -77,6 +77,7 @@ export function getArticleBySlug(
       contientLiensAffilies: data.contientLiensAffilies ?? false,
       tempsLecture: Math.ceil(readingTime(content).minutes),
       comparatif: data.comparatif,
+      faqs: data.faqs ?? [],
     },
     content,
   };

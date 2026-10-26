@@ -6,7 +6,9 @@
       "Read(//Users/yohaninthirion/.nvm/**)",
       "Bash(ls /usr/local/bin/ 2>/dev/null | head -20; ls /opt/homebrew/bin/ 2>/dev/null | grep -E \"node|npm|pnpm|bun\"; ls ~/.nvm/ 2>/dev/null; ls ~/.volta/ 2>/dev/null)",
       "Bash(find /usr /opt /home ~/ -name \"node\" -type f 2>/dev/null | head -5)",
-      "WebFetch(domain:nosincontournables.com)"
+      "WebFetch(domain:nosincontournables.com)",
+      "WebSearch",
+      "Bash(git add *)"
     ]
   }
 }

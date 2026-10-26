@@ -2,10 +2,12 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getArticleBySlug, getAllArticles } from "@/lib/content";
-import { buildMetadata, jsonLdArticle, jsonLdBreadcrumb } from "@/lib/seo";
+import { buildMetadata, jsonLdArticle, jsonLdBreadcrumb, jsonLdFAQ } from "@/lib/seo";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { TableOfContents } from "@/components/TableOfContents";
+import { FAQSection } from "@/components/FAQSection";
+import { AuthorBio } from "@/components/AuthorBio";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -43,6 +45,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle(article)) }}
       />
+      {article.faqs?.length ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFAQ(article.faqs)) }}
+        />
+      ) : null}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -114,6 +122,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 <AffiliateDisclosure />
               </div>
             )}
+
+            <FAQSection faqs={article.faqs ?? []} />
+            <AuthorBio auteur={article.auteur} dateMaj={article.dateMaj} />
           </article>
 
           <aside className="hidden lg:block">
