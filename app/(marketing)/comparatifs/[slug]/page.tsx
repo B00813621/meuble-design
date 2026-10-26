@@ -6,6 +6,7 @@ import { buildMetadata, jsonLdArticle, jsonLdBreadcrumb } from "@/lib/seo";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ComparisonTable } from "@/components/ComparisonTable";
+import { Callout } from "@/components/Callout";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 
@@ -37,6 +38,7 @@ export default async function ComparatifPage({ params }: { params: Promise<{ slu
   const { article, content } = result;
   const mdxComponents = {
     ComparisonTable: () => article.comparatif ? <ComparisonTable comparatif={article.comparatif} /> : null,
+    Callout,
   };
 
   return (

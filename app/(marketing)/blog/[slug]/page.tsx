@@ -8,6 +8,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { TableOfContents } from "@/components/TableOfContents";
 import { FAQSection } from "@/components/FAQSection";
 import { AuthorBio } from "@/components/AuthorBio";
+import { Callout } from "@/components/Callout";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -108,6 +109,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <div className="prose-editorial">
               <MDXRemote
                 source={content}
+                components={{ Callout }}
                 options={{
                   mdxOptions: {
                     remarkPlugins: [remarkGfm],

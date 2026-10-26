@@ -8,6 +8,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { TableOfContents } from "@/components/TableOfContents";
 import { FAQSection } from "@/components/FAQSection";
 import { AuthorBio } from "@/components/AuthorBio";
+import { Callout } from "@/components/Callout";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -76,7 +77,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             {article.contientLiensAffilies && <AffiliateDisclosure />}
 
             <div className="prose-editorial">
-              <MDXRemote source={content} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
+              <MDXRemote source={content} components={{ Callout }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
             </div>
 
             {article.contientLiensAffilies && <div className="mt-8"><AffiliateDisclosure /></div>}
